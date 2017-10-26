@@ -46,6 +46,7 @@ func TestACKindMarshalGood(t *testing.T) {
 	for i, in := range []string{
 		"ImageManifest",
 		"PodManifest",
+		"VMManifest",
 	} {
 		a := ACKind(in)
 		b, err := json.Marshal(a)
@@ -63,6 +64,7 @@ func TestACKindUnmarshalBad(t *testing.T) {
 		"ImageManifest", // Not a valid JSON-encoded string
 		`"garbage"`,
 		`"AppManifest"`,
+		`"VmManifest"`,
 		`""`,
 	}
 	for i, in := range tests {
@@ -80,6 +82,7 @@ func TestACKindUnmarshalGood(t *testing.T) {
 	tests := map[string]ACKind{
 		`"PodManifest"`:   ACKind("PodManifest"),
 		`"ImageManifest"`: ACKind("ImageManifest"),
+		`"VMManifest"`:    ACKind("VMManifest"),
 	}
 	for in, w := range tests {
 		var a ACKind

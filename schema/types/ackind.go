@@ -35,7 +35,7 @@ func (a ACKind) String() string {
 func (a ACKind) assertValid() error {
 	s := a.String()
 	switch s {
-	case "ImageManifest", "PodManifest":
+	case "ImageManifest", "PodManifest", "VMManifest":
 		return nil
 	case "":
 		return ErrNoACKind
